@@ -2,6 +2,7 @@ import time
 import random
 import string
 
+import pytest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from pageObjects.AddCustomerPage import AddCustomer
@@ -14,7 +15,7 @@ class Test_003_AddCustomer:
     username=ReadConfig.getUserName()
     password=ReadConfig.getPassword()
     logger=LogGen.loggen()
-
+    @pytest.mark.sanity
     def test_addCustomer(self,setup):
         self.logger.info("********Test_003_AddCustomer**********")
         self.driver=setup
@@ -41,7 +42,7 @@ class Test_003_AddCustomer:
         self.addcust.setGender("Male")
         self.addcust.setDOB("11/12/1995")
         self.addcust.setCompanyName("TCS")
-        self.addcust.setjenish("tester")
+        # self.addcust.setjenish("tester1")
         self.addcust.setCustomerRole("Guests")
         # time.sleep(10)
         self.addcust.setMgrVandor("Vendor 2")

@@ -1,4 +1,4 @@
-
+import pytest
 from selenium import webdriver
 from pageObjects.loginPage import loginPage
 from Utilities.readProperties import ReadConfig
@@ -11,6 +11,7 @@ class Test__001__Login:
     Password = ReadConfig.getPassword()
     logger=LogGen.loggen()
 
+    @pytest.mark.regression
     def test_homePageTitle(self,setup):
         self.logger.info("*************Test__001__Login***********")
         self.logger.info("*************test_homePageTitle***********")
@@ -25,7 +26,8 @@ class Test__001__Login:
             self.driver.save_screenshot(".\\Screenshots\\"+"test_homePageTitle.png")
             self.driver.close()
 
-
+    @pytest.mark.sanity
+    @pytest.mark.regression
     def test_loginTitlePage(self,setup):
         self.driver = setup
         self.driver.get(self.baseURL)
